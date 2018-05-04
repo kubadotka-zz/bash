@@ -1,5 +1,4 @@
 #!/bin/bash
-#ip or domain name of your vps/vm
 clear
 #install dependiences
 sudo apt-get install ca-certificates curl openssh-server postfix
