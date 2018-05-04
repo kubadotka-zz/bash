@@ -1,0 +1,26 @@
+#!/bin/bash
+#ip or domain name of your vps/vm
+clear
+#install dependiences
+sudo apt-get install ca-certificates curl openssh-server postfix
+cd /tmp
+#download installation script to/tmp
+curl -LO https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh
+#script adding repos to apt-get
+sudo bash script.deb.sh
+#download gitlab
+sudo apt-get install gitlab-ce
+#ufw firewall
+sudo ufw allow http
+sudo ufw allow https
+#writing external_url to gitlab's files
+read -r -p "Do you have domain name ? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
+	read -p "Write domain name" warunek
+	sudo sed -i "s/^external_url.*/external_url \'https://${warunek}\'/" /etc/gitlab/gitlab.rb
+else
+	read -p "Write ip address" warunek    
+	sudo sed -i "s/^external_url.*/external_url \'http://${warunek}\'/" /etc/gitlab/gitlab.rb
+fi
+sudo gitlab-ctl reconfigure
+echo go to address you provided with browser and enjoy usability of gitlab!
