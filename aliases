@@ -1,0 +1,59 @@
+#privileges
+if [ $UID -ne 0 ]; then
+    alias reboot='sudo reboot'
+    alias update='sudo apt-get upgrade'
+fi
+#os specific aliases
+case $_myos in
+   Linux) alias foo='/path/to/linux/bin/foo';;
+   FreeBSD|OpenBSD) alias foo='/path/to/bsd/bin/foo' ;;
+   SunOS) alias foo='/path/to/sunos/bin/foo' ;;
+   *) ;;
+esac
+#ls command output
+#colors
+alias ls='ls --color=auto'
+#long listing
+alias ll='ls -la'
+#show hidden files 
+alias l.='ls -d .* --color=auto'
+#cd control
+#get rid of typo
+alias cd..='cd ..'
+#faster getting out
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+#grep colors
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+#create parent dirs on demand
+alias mkdir='mkdir -pv'
+#mount human readable format
+alias mount='mount |column -t'
+#handy commands
+alias path='echo -e ${PATH//:/\\n}'
+alias now='date +"%T"'
+#vi
+alias vi=vim
+alias edit='vim'
+#stop after echo req packets
+alias ping='ping -c 5'
+#don't wait interval
+alias fastping='ping -c 100 -s.2'
+#show open ports
+alias ports='netstat -tulamp'
+alias apt-get='sudo apt-get'
+alias update='sudo apt-get update && sudo apt-get upgrade'
+#get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+#get top process eating cpu
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+alias wget='wget -c'
+alias top='atop'
+alias df='df -H'
+alias du='du -ch'
+
