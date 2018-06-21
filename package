@@ -1,0 +1,7 @@
+#!/bin/bash
+yes | apt-get update
+yes | apt-get upgrade
+for package_name in "$@"
+do
+yes | apt-get install $package_name
+done
