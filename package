@@ -5,3 +5,4 @@ for package_name in "$@"
 do
 yes | apt-get install $package_name
 done
+#after adding to .bashrc in aliases file usage is simple: package <packagename> <packagename> to install packages, needs to be followed by sudo (security)
