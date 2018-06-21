@@ -56,4 +56,5 @@ alias wget='wget -c'
 alias top='atop'
 alias df='df -H'
 alias du='du -ch'
-
+package.sh from repo
+alias package='/bin/package'
