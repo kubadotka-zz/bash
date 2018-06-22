@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 #after updaring run 'source .bashrc'
+=======
+
+#after updating run 'source .bashrc'
+>>>>>>> 870d8cd8eab8c853baffcaa5961bb8b1e2520599
 #privileges
 if [ $UID -ne 0 ]; then
     alias reboot='sudo reboot'
