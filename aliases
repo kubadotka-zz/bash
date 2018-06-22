@@ -1,3 +1,4 @@
+#after updaring run 'source .bashrc'
 #privileges
 if [ $UID -ne 0 ]; then
     alias reboot='sudo reboot'
@@ -57,4 +58,6 @@ alias top='atop'
 alias df='df -H'
 alias du='du -ch'
 package.sh from repo
+#scripts
 alias package='/bin/package'
+aliast docker_wipe='/bin/docker_wipe'
