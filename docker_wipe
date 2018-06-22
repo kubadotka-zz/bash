@@ -1,0 +1,13 @@
+#!/bin/bash
+# add curent user to docker sudo group
+sudo usermod -aG docker ${USER}
+past=$(docker ps -aq | wc -l)
+(docker stop $(docker ps -a -q)) > /dev/null 2>&1
+docker rm $(docker ps -a -q) > /dev/null 2>&1
+if [[ $(docker ps -aq) ]]; then
+         echo "something went wrong! you probably have to wipe docker images manually!"
+else
+        echo "there'are no running containers left!"
+fi
+recent=$(docker ps -aq | wc -l)
+echo "deleted $((past - recent)) containers!"
